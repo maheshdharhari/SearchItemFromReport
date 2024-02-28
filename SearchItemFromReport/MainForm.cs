@@ -54,7 +54,6 @@ namespace SearchFromReport
         {
             if (!File.Exists(htmlFilePath))
                 return null;
-            var listOfItemId = new List<string>();
             var allListOfItemId = new List<string>();
             var doc = new HtmlDocument();
             doc.Load(htmlFilePath);
@@ -79,7 +78,7 @@ namespace SearchFromReport
 
             var unused = allListOfItemId.Count();
 
-            return listOfItemId;
+            return allListOfItemId;
         }
 
        
@@ -91,6 +90,8 @@ namespace SearchFromReport
                 return;
             var failedItems = FindIdInHtml(htmlFilePath);
             var newFileWithExtension = _itemToSearch + ".csv";
+            if(File.Exists(newFileWithExtension))
+                File.Delete(newFileWithExtension);
             var stringValue = string.Join(Environment.NewLine, failedItems.ToArray());
 
             using (var sw = new StreamWriter(newFileWithExtension))
