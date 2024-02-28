@@ -75,6 +75,7 @@
             // cmbItemType
             // 
             this.cmbItemType.Items.AddRange(new object[] {
+            "All",
             "Folder",
             "Item"});
             this.cmbItemType.Location = new System.Drawing.Point(73, 45);

@@ -63,7 +63,7 @@ namespace SearchFromReport
                 try
                 {
                     var itemType = row.SelectNodes("td")[3].InnerText;
-                    if (itemType != _itemToSearch) continue;
+                    if (_itemToSearch!="All" && itemType != _itemToSearch) continue;
                     var itemName = row.SelectNodes("td")[0].InnerText;
                     var itemPath = row.SelectNodes("td")[1].InnerText;
                     var itemId = row.SelectNodes("td")[2].InnerText;
